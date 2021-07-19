@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.gudigar.abhishek.wordGridapi.service.WordGridService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ public class WordGridApiController {
 	private WordGridService wordGridService;
 	
 	@GetMapping("/wordgrid")
+	@CrossOrigin(origins = "http://localhost:1234")
 	public String createWordGrid(@RequestParam int gridSize, @RequestParam String wordsList) {
 		List<String> words = Arrays.asList(wordsList.split(","));
 		char[][] grid = wordGridService.generateGrid(gridSize, words);
